@@ -8,8 +8,8 @@ router.get('/', (req, res, next)=>{
 });
 
 router.post('/',upload.single('img'),(req,res,next)=>{//가운데 인자는 pug form에 있던 type='text',name='img'때문
-  if(req.file) res.send('저장되었습니다'+req.file.filename);//윗줄에서 저장된 결과가 req로 간댕!
-  else res.send("파일을 저장하지 못했습니다.");
+  if(req.isFileValidate) res.json(req.file);//윗줄에서 저장된 결과가 req로 간댕! 이름만적고 그냥 저장하면 저장x라고 뜸.
+  else res.send("업로드를 할 수 없는 파일입니당!");
 });
 
 module.exports = router;

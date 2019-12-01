@@ -13,13 +13,13 @@ var storage = multer.diskStorage({//통만들기
 
 var allowExt = ['.jpg','.png','.jpeg','.gif','.zip','.pdf']//허용 선 수기 입력
 var chkFile = (req,file,cb) => {//업로드하기 전 필터 작업
-  var ext = path.extname(file.originalname).toLowerCase();
+  var ext = path.extname(file.originalname).toLowerCase(); //file.originalname은 원래 있는거 !
   if(allowExt.indexOf(ext) !== -1){
-    req.fileValidateError = true;//req인자가 갖고있는거래
+    req.isFileValidate = true;// isFileValidate는 작명ㅋㅋㅋ 나중에 누가 이름만 적고 파일을 스킵했을때 저장x라고 뜨니까 이거 만들어서 구분용!!!!!
     cb(null,true);
   }
   else{
-    req.fileValidateError = false;
+    req.isFileValidate = false;
     cb(null,false);
   }
 };
