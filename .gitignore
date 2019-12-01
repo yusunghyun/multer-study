@@ -109,3 +109,5 @@ typings/
 /node_modules
 /config
 .idea
+/public/uploads
+
